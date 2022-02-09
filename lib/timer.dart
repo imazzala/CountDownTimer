@@ -1,5 +1,8 @@
 import 'dart:async';
 import 'package:cronometer/TimerModel.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
 
 class CountDownTimer{
   double _radius = 1;

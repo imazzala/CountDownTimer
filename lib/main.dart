@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import './timer.dart';
 import './TimerModel.dart';
+import 'settings.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,6 +34,10 @@ class TimerHomePage extends StatelessWidget {
   final double defaultPadding = 5.0;
   final CountDownTimer timer = CountDownTimer();
 
+  void goToSettings(BuildContext context){
+    Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsScreen()));
+  }
+
   @override
   Widget build(BuildContext context) {
     timer.startWork();
@@ -47,7 +52,13 @@ class TimerHomePage extends StatelessWidget {
           actions: [
             PopupMenuButton(itemBuilder: (BuildContext context){
               return menuItems.toList();
-            })
+            },
+            onSelected: (s){
+              if(s == "Settings"){
+                goToSettings(context);
+              }
+            },
+            )
           ],
            ),
            body: LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints){
