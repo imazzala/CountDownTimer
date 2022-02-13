@@ -30,18 +30,23 @@ class ProductivityButton extends StatelessWidget {
   }
 }
 
+typedef CallbackSettings = void Function(String, int);
+
+
 class SettingsButton extends StatelessWidget {
 
   final Color color;
   final String text;
   final int value;
+  final String setting;
+  final CallbackSettings callback;
 
-  const SettingsButton(Key? key, this.color, this.text, this.value) : super(key: key);
+  const SettingsButton(Key? key, this.color, this.text, this.value, this.setting,this.callback) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      onPressed: (){},
+      onPressed: () => callback(setting, value),
       child: Text(
         text,
         style: const TextStyle(color: Colors.white),
